@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CiaLoja - Painel dos Funcionários</title>
+    <link rel="stylesheet" href="funcionarios.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>👥 CiaLoja - Painel dos Funcionários</h1>
+            <p>Visualização das Ordens de Reparo</p>
+        </header>
+
+        <!-- Navegação -->
+        <nav class="navigation">
+            <a href="index.html" class="nav-link">
+                🔧 Painel Administrativo
+            </a>
+            <button id="refreshBtn" class="btn btn-secondary">
+                🔄 Atualizar
+            </button>
+        </nav>
+
+        <!-- Estatísticas Resumidas -->
+        <div class="stats-container">
+            <div class="stat-card pending">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-info">
+                    <div class="stat-number" id="pendingCount">0</div>
+                    <div class="stat-label">Pendentes</div>
+                </div>
+            </div>
+
+            <div class="stat-card approved">
+                <div class="stat-icon">✅</div>
+                <div class="stat-info">
+                    <div class="stat-number" id="approvedCount">0</div>
+                    <div class="stat-label">Aprovadas</div>
+                </div>
+            </div>
+
+            <div class="stat-card in-progress">
+                <div class="stat-icon">🔧</div>
+                <div class="stat-info">
+                    <div class="stat-number" id="inProgressCount">0</div>
+                    <div class="stat-label">Em Andamento</div>
+                </div>
+            </div>
+
+            <div class="stat-card completed">
+                <div class="stat-icon">🎉</div>
+                <div class="stat-info">
+                    <div class="stat-number" id="completedCount">0</div>
+                    <div class="stat-label">Concluídas</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filters-container">
+            <div class="filter-group">
+                <label for="statusFilter">Filtrar por Status:</label>
+                <select id="statusFilter">
+                    <option value="all">Todos os Status</option>
+                    <option value="pending">Pendente</option>
+                    <option value="approved">Aprovado</option>
+                    <option value="in-progress">Em Andamento</option>
+                    <option value="completed">Concluído</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="priorityFilter">Filtrar por Prioridade:</label>
+                <select id="priorityFilter">
+                    <option value="all">Todas as Prioridades</option>
+                    <option value="high">Alta</option>
+                    <option value="medium">Média</option>
+                    <option value="low">Baixa</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="searchInput">Buscar:</label>
+                <input type="text" id="searchInput" placeholder="Nome do cliente ou modelo...">
+            </div>
+        </div>
+
+        <!-- Lista de Ordens -->
+        <div id="ordersList" class="orders-list">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>Carregando ordens...</p>
+            </div>
+        </div>
+
+        <!-- Detalhes da Ordem (Modal) -->
+        <div id="detailsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Detalhes da Ordem</h2>
+                    <button class="close-btn" id="closeDetailsBtn">&times;</button>
+                </div>
+                <div id="orderDetails" class="order-details">
+                    <!-- Detalhes serão inseridos aqui -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="funcionarios.js"></script>
+</body>
+
+</html>

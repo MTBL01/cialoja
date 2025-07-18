@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CiaLoja - Gerenciador de Ordens de Reparo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🔧 CiaLoja - Gerenciador de Ordens de Reparo</h1>
+        </header>
+        <a href="../CiaLoja/funcionarios.html" target="_blank">functest</a>
+        <!-- Estatísticas -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number" id="totalCount">0</div>
+                <div class="stat-label">Total de Ordens</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pendingCount">0</div>
+                <div class="stat-label">Pendentes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="inProgressCount">0</div>
+                <div class="stat-label">Em Andamento</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="completedCount">0</div>
+                <div class="stat-label">Concluídas</div>
+            </div>
+        </div>
+
+        <!-- Controles -->
+        <div class="controls">
+            <button id="addNewOrderBtn" class="btn btn-primary">
+                ➕ Adicionar Nova Ordem
+            </button>
+
+            <div class="filters">
+                <select id="statusFilter">
+                    <option value="all">Todos os Status</option>
+                    <option value="pending">Pendente</option>
+                    <option value="approved">Aprovado</option>
+                    <option value="in-progress">Em Andamento</option>
+                    <option value="completed">Concluído</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Lista de Ordens -->
+        <div id="ordersList" class="orders-list">
+            <div class="empty-state">
+                <h3>Nenhuma ordem encontrada</h3>
+                <p>Clique em "Adicionar Nova Ordem" para começar</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Adicionar Nova Ordem</h2>
+                <button class="close-btn" id="closeModalBtn">&times;</button>
+            </div>
+
+            <form id="orderForm" class="order-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerName">Nome do Cliente:</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customerPhone">Telefone:</label>
+                        <input type="tel" id="customerPhone" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="deviceType">Tipo de Aparelho:</label>
+                        <select id="deviceType" required>
+                            <option value="">Selecione...</option>
+                            <option value="smartphone">Smartphone</option>
+                            <option value="tablet">Tablet</option>
+                            <option value="laptop">Notebook</option>
+                            <option value="desktop">Desktop</option>
+                            <option value="tv">TV</option>
+                            <option value="other">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deviceModel">Modelo:</label>
+                        <input type="text" id="deviceModel" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="problemDescription">Descrição do Problema:</label>
+                    <textarea id="problemDescription" rows="3" required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="estimatedCost">Custo Estimado (R$):</label>
+                        <input type="number" id="estimatedCost" step="0.01" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="priority">Prioridade:</label>
+                        <select id="priority">
+                            <option value="low">Baixa</option>
+                            <option value="medium" selected>Média</option>
+                            <option value="high">Alta</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderStatus">Status:</label>
+                    <select id="orderStatus">
+                        <option value="pending" selected>Pendente</option>
+                        <option value="approved">Aprovado</option>
+                        <option value="in-progress">Em Andamento</option>
+                        <option value="completed">Concluído</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" id="cancelBtn" class="btn btn-secondary">Cancelar</button>
+                    <button type="submit" id="saveBtn" class="btn btn-primary">Salvar Ordem</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
